@@ -1,0 +1,25 @@
+<%= form_for(@bullet) do |f| %>
+  <% if @bullet.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@bullet.errors.count, "error") %> prohibited this bullet from being saved:</h2>
+
+      <ul>
+      <% @bullet.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :ready %><br />
+    <%= f.check_box :ready %>
+  </div>
+  <div class="field">
+    <%= f.label :text %><br />
+    <%= f.text_area :text %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

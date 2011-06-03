@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Ready:</b>
+  <%= @bullet.ready %>
+</p>
+
+<p>
+  <b>Text:</b>
+  <%= @bullet.text %>
+</p>
+
+
+<%= link_to 'Edit', edit_bullet_path(@bullet) %> |
+<%= link_to 'Back', bullets_path %>

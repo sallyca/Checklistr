@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+
+<h1><%= @page.title %></h1>
+
+<div>
+  <% form_for :page, :url => {:action => "addbullet"}, :html => {:multipart => true} do |page| %>
+      <p><%= @new_bullet %></p>
+
+      <p><%= submit_tag "Добавить" %></p>
+      <%= select("search", "title", @select_list, :selected=>@selected, :onchange =>"$('addbullet').submit()") %>
+  <% end %></div>
+<% @page.checklists.each do |list| %>
+    <tr>
+      <td><h2><%= list.title %></h2></td>
+
+    </tr>
+<% end %>
+
+
+<p>
+<%= link_to 'Добавить список', :controller => "checklists",
+            :action =>"new",
+            :page_id =>@page.id
+%>
+
+</p>
+
+
+
+<%= link_to 'Edit', edit_page_path(@page) %> |
+<%= link_to 'Back', pages_path %>
