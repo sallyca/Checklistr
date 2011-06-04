@@ -9,7 +9,6 @@ $(document).ready(function() {
     $(".on_the_spot_editing").mouseout(function() {
         $(this).css('font-size', 'inherit');
     });
-
     $('.on_the_spot_editing').each(initializeOnTheSpot);
 
 });
