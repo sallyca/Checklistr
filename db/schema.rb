@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110603204921) do
+ActiveRecord::Schema.define(:version => 20110603214948) do
 
   create_table "bullets", :force => true do |t|
     t.boolean  "ready"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(:version => 20110603204921) do
     t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "new_bullet"
   end
 
 end

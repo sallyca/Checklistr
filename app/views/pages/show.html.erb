@@ -4,25 +4,30 @@
 <h1><%= @page.title %></h1>
 
 <div>
-  <% form_for :page, :url => {:action => "addbullet"}, :html => {:multipart => true} do |page| %>
-      <p><%= @new_bullet %></p>
-
-      <p><%= submit_tag "Добавить" %></p>
+  <% form_for :page, :url => {:action => "addbullet", :page_id=>@page.id}, :html => {:multipart => true} do |page| %>
+      <p><%= page.text_field :new_bullet %><%= submit_tag "Добавить" %></p>
       <%= select("search", "title", @select_list, :selected=>@selected, :onchange =>"$('addbullet').submit()") %>
   <% end %></div>
 <% @page.checklists.each do |list| %>
     <tr>
-      <td><h2><%= list.title %></h2></td>
+      <td><h3><%= list.title %></h3></td>
+      <% list.bullets.each do |bullet| %>
 
+        <tr>
+          <td><%= bullet.ready %></td>
+          <td><%= bullet.text %></td>
+        </tr>
+        <br/>
+    <% end %>
     </tr>
 <% end %>
 
 
 <p>
-<%= link_to 'Добавить список', :controller => "checklists",
-            :action =>"new",
-            :page_id =>@page.id
-%>
+  <%= link_to 'Добавить список', :controller => "checklists",
+              :action =>"new",
+              :page_id =>@page.id
+  %>
 
 </p>
 

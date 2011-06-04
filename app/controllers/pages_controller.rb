@@ -14,7 +14,7 @@ class PagesController < ApplicationController
   # GET /pages/1.xml
   def show
     @page = Page.find(params[:id])
-    @new_bullet=''
+
     @select_list=@page.select_list.keys
     respond_to do |format|
       format.html # show.html.erb
@@ -91,25 +91,24 @@ class PagesController < ApplicationController
     if !params[:search].nil?
       @selected =params[:search]['title']
       checklist=nil
+      @page=Page.find(params[:page_id])
       @page.checklists.each do |list|
-        if list.title==@selected
+        if @selected==list.title
           checklist=list
         end
       end
       if checklist.nil?
-        checklist=Checklist.new
+        checklist=@page.checklists[1]
       end
 
       bullet=Bullet.new
-      bullet.text=@new_bullet
+      bullet.text=@page.new_bullet
       bullet.ready=false
       checklist.bullets<<bullet
 
-      @page.checklists<<checklist
-
     end
     respond_to do |format|
-      format.html # new.html.erb
+      format.html { redirect_to(@page, :notice => 'Bullet was successfully created.') }
       format.xml { render :xml => @page }
     end
   end
