@@ -1,3 +1,9 @@
+.h1class{
+    font-size:   24px;
+}
+.nobr {white-space: nowrap}
+
+
 body { background-color: #fff; color: #333; }
 
 body, p, ol, ul, td {
@@ -9,7 +15,7 @@ body, p, ol, ul, td {
 pre {
   background-color: #eee;
   padding: 10px;
-  font-size: 11px;
+  font-size: 13px;
 }
 
 a { color: #000; }

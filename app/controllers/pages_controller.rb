@@ -1,4 +1,10 @@
+
 class PagesController < ApplicationController
+
+  can_edit_on_the_spot
+#
+#   in_place_edit_for :page, :title
+
   # GET /pages
   # GET /pages.xml
   def index
@@ -18,6 +24,7 @@ class PagesController < ApplicationController
     @select_list=@page.select_list.keys
     respond_to do |format|
       format.html # show.html.erb
+
       format.xml { render :xml => @page }
     end
   end
@@ -52,6 +59,7 @@ class PagesController < ApplicationController
     respond_to do |format|
       if @page.save
         format.html { redirect_to(@page, :notice => 'Page was successfully created.') }
+        format.js
         format.xml { render :xml => @page, :status => :created, :location => @page }
       else
         format.html { render :action => "new" }
@@ -64,8 +72,7 @@ class PagesController < ApplicationController
   # PUT /pages/1.xml
   def update
     @page = Page.find(params[:id])
-
-    respond_to do |format|
+     respond_to do |format|
       if @page.update_attributes(params[:page])
         format.html { redirect_to(@page, :notice => 'Page was successfully updated.') }
         format.xml { head :ok }
@@ -116,6 +123,25 @@ class PagesController < ApplicationController
       format.html { redirect_to(@page, :notice => 'Bullet was successfully created.') }
       format.xml { render :xml => @page }
     end
+  end
+
+  def ready
+    if !params[:bullet_id].nil?
+      @bullet = Bullet.find(params[:bullet_id])
+      @bullet.ready == false ? @bullet.ready=true : @bullet.ready=false
+      @bullet.save
+
+
+      @bullets=Bullet.all
+#      @checklist=Checklist.find(@bullet.checklist_id)
+#      @checklist.bullets=@bullets
+#      @checklists=Checklist.all
+#      @page=Page.find(@checklist.page_id)
+#      @page.checklists=@checklists
+#      @page.save
+    end
+    render :nothing => true
+
   end
 
 end

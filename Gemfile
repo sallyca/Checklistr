@@ -10,6 +10,12 @@ gem 'sqlite3'
 gem 'rspec'
 gem 'rspec-rails'
 
+gem 'in_place_editing'
+
+gem "jquery-rails"
+gem "on_the_spot"
+
+
 # Use unicorn as the web server
 # gem 'unicorn'
 
