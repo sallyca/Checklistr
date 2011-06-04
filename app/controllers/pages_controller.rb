@@ -26,7 +26,7 @@ class PagesController < ApplicationController
   # GET /pages/new.xml
   def new
     @page = Page.new
-    @page.checklists= Array.new
+
 
     respond_to do |format|
       format.html # new.html.erb
@@ -43,6 +43,11 @@ class PagesController < ApplicationController
   # POST /pages.xml
   def create
     @page = Page.new(params[:page])
+    @page.checklists= Array.new
+    checklist= Checklist.new
+    checklist.title='Новый список'
+    @page.checklists<<checklist
+
 
     respond_to do |format|
       if @page.save
@@ -102,7 +107,7 @@ class PagesController < ApplicationController
       end
 
       bullet=Bullet.new
-      bullet.text=@page.new_bullet
+      bullet.text=params[:page]['new_bullet']
       bullet.ready=false
       checklist.bullets<<bullet
 
