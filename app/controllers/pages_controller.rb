@@ -21,7 +21,7 @@ class PagesController < ApplicationController
   def show
     @page = Page.find(params[:id])
 
-    @select_list=@page.select_list.keys
+    @select_list=@page.select_list
     respond_to do |format|
       format.html # show.html.erb
 
