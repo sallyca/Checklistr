@@ -8,7 +8,27 @@
 </head>
 <body>
 
-<%= yield %>
+<div id="columns">
+  <div id="side">
+
+      <%= link_to 'Добавить страницу', :controller => "pages",
+                  :action =>"new"
+      %>
+
+      <%= pages.each do |page| %>
+        <p>
+          <%= link_to "#{page.title}", :controller=>"pages",
+                      :action=>"show",
+                      :id=>page.id %>
+        </p>
+    <% end %>
+
+  </div>
+
+</div>
+<div id="main">
+  <%= yield %>
+</div>
 
 </body>
 </html>

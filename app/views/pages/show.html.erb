@@ -8,7 +8,7 @@
 <div>
   <% form_for :page, :url => {:action => "addbullet", :page_id=>@page.id}, :html => {:multipart => true} do |page| %>
       <p><%= page.text_field(:new_bullet, :size => 100) %><%= submit_tag "Добавить" %></p>
-      В список: <%= select("search", "title", @select_list, :selected=>@selected, :onchange =>"$('addbullet').submit()") %>
+      в список: <%= select("search", "title", @select_list, :selected=>@selected, :onchange =>"$('addbullet').submit()") %>
   <% end %></div>
 <% @page.checklists.each do |list| %>
 
@@ -28,13 +28,6 @@
 <% end %>
 
 
-<p>
-  <%= link_to 'Добавить список', :controller => "checklists",
-              :action =>"new",
-              :page_id =>@page.id
-  %>
-
-</p>
 
 
 

@@ -1,0 +1,19 @@
+#columns {
+    background: #fff;
+}
+
+#main {
+    margin-left: 13em;
+    padding-top: 4ex;
+    padding-left: 1em;
+    background: white;
+}
+
+#side {
+    float: right;
+    padding-top: 1em;
+    padding-left: 1em;
+    padding-bottom: 1em;
+    width: 12em;
+    background: #fff;
+}
