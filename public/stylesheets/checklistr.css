@@ -1,19 +1,50 @@
 #columns {
-    background: #fff;
-}
+  background: #fff; }
 
 #main {
-    margin-left: 13em;
-    padding-top: 4ex;
-    padding-left: 1em;
-    background: white;
-}
+  margin-left: 13em;
+  padding-top: 4ex;
+  padding-left: 1em;
+  background: white; }
 
 #side {
-    float: right;
-    padding-top: 1em;
-    padding-left: 1em;
-    padding-bottom: 1em;
-    width: 12em;
-    background: #fff;
+  float: right;
+  padding-top: 5ex;
+  padding-left: 1em;
+  padding-bottom: 1em;
+  width: 16em;
+  background: #fff; }
+
+div.add_to_sidebar {
+  font-size: 18px;
+  color: #c60;
+  line-height: 1.4; }
+
+div.list {
+  font-size: 14px; }
+
+div.pagenav a:hover {
+  background: #666;
+  color: #fff;
+  text-decoration: none; }
+
+/* @group content */
+
+.pretty th {
+
+ border-collapse: collapse;
 }
+
+.pretty th .current {
+	padding-right: 12px;
+	background-repeat: no-repeat;
+	background-position: right center;
+}
+.pretty th asc {
+	
+}
+
+
+
+
+/* @end */

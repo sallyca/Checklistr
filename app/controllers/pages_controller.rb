@@ -15,7 +15,7 @@ class PagesController < ApplicationController
       format.xml { render :xml => @pages }
     end
   end
-
+  
   # GET /pages/1
   # GET /pages/1.xml
   def show

@@ -1,7 +1,11 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  title: MyString
+  title: Новый список   # integrate_views
+    fixtures :checklists
+    fixtures :pages
+  page_id: 1
 
 two:
   title: MyString
+  page_id: 2

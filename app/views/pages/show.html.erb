@@ -5,24 +5,22 @@
 
 <h1><%= on_the_spot_edit @page, 'title' %></h1>
 
-<div>
+<div class="page">
   <% form_for :page, :url => {:action => "addbullet", :page_id=>@page.id}, :html => {:multipart => true} do |page| %>
-      <p><%= page.text_field(:new_bullet, :size => 100) %><%= submit_tag "Добавить" %></p>
+      <p><%= page.text_field(:new_bullet, :size => 100) %><%= submit_tag "Add" %></p>
       в список: <%= select("search", "title", @select_list, :selected=>@selected, :onchange =>"$('addbullet').submit()") %>
   <% end %></div>
 <% @page.checklists.each do |list| %>
 
     <td><h3><%= list.title %></h3></td>
     <% list.bullets.each do |bullet| %>
-
-        <tr>
-          <div class="nobr">
+      <tr>
+          <div class="list">
           <td><%= check_box(:bullet, :ready, :onchange => remote_function(:url => {:controller => 'pages', :action => 'ready',
                                                                                    :bullet_id=>bullet.id, :page_id=>@page.id}), :remote=>true) %>
             <%=on_the_spot_edit bullet,:text %></td>
               </div>
         </tr>
-        <br/>
     <% end %>
 
 <% end %>
@@ -30,6 +28,3 @@
 
 
 
-
-<%= link_to 'Edit', edit_page_path(@page) %> |
-<%= link_to 'Back', pages_path %>

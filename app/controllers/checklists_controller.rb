@@ -1,8 +1,22 @@
 class ChecklistsController < ApplicationController
+  
+  helper_method :sort_column, :sort_direction
+  
   # GET /checklists
   # GET /checklists.xml
   def index
-    @checklists = Checklist.all
+    @checklists = Checklist.order(sort_column + " " + sort_direction)
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @checklists }
+    end
+  end
+  
+  # GET /checklists
+  # GET /checklists.xml
+  def main
+    @checklists = Checklist.where(:shared => true)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -25,6 +39,9 @@ class ChecklistsController < ApplicationController
   # GET /checklists/new.xml
   def new
     @checklist = Checklist.new
+    if params[:page_id].nil?
+      params[:page_id]=Page.first.id
+    end
     page=Page.find(params[:page_id])
     page.checklists<<@checklist
 
@@ -82,4 +99,15 @@ class ChecklistsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  private
+  
+  def sort_column
+    Checklist.column_names.include?(params[:sort]) ? params[:sort] : "title"
+  end
+  
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end
+  
 end
